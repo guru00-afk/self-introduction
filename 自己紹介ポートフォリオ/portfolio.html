@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>自己紹介</title>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+  <style>
+    /* 背景アニメーションと基本設定 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+      color: #333;
+      background: linear-gradient(-45deg, #fceef4, #e4f0ff, #fff6e7, #e9fdf3);
+      background-size: 400% 400%;
+      animation: gradientMove 20s ease infinite;
+      scroll-behavior: smooth;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2em;
+    }
+
+    header {
+      text-align: center;
+      padding-bottom: 1em;
+    }
+
+    header h1 {
+      color: #86b6f6;
+      font-size: 2em;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      margin-top: 1em;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #f18aaa;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #86b6f6;
+    }
+
+    section {
+      margin-bottom: 3em;
+      background: #ffffffcc;
+      padding: 1.5em;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #00000010;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px #00000020;
+    }
+
+    section h2 {
+      position: relative;
+      padding-bottom: 0.5em;
+      margin-bottom: 1em;
+      color: #86b6f6;
+    }
+
+    section h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      background: #f18aaa;
+      border-radius: 2px;
+    }
+
+    /* 横スライドの作品紹介 */
+    .works-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 1em;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1em;
+    }
+
+    .work {
+      flex: 0 0 auto;
+      width: 250px;
+      scroll-snap-align: start;
+      background: #fff;
+      padding: 1em;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #00000010;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .work img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .work:hover {
+      transform: scale(1.03);
+    }
+
+    /* モーダル（作品拡大） */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      background: white;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px #00000030;
+      text-align: center;
+    }
+
+    .modal img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* TOPボタン */
+    #top-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #f18aaa;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #00000020;
+      transition: background 0.3s ease;
+      z-index: 20;
+    }
+
+    #top-button:hover {
+      background: #86b6f6;
+    }
+
+    footer {
+      text-align: center;
+      padding-top: 1em;
+      color: #999;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>加藤 愛晶</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">Home</a></li>
+          <li><a href="#works">Works</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about">
+        <h2>自己紹介</h2>
+        <p>加藤　愛晶(かとうあん)です。</p>
+        <p>2026年滋賀短期大学卒業。</p>
+        <p>この自作HPは大まかな枠や変更はAIを使用しましたが、細かな修正や微調整は手動で行いました。</p>
+        <p>よろしくお願いします。</p>
+      </section>
+
+      <section id="skills">
+  <h2>使用ツール</h2>
+  <p>Blender / Photoshop / After Effects / Premiere Pro / Unity / Visual Studio Code</p>
+</section>
+
+<section id="works">
+  <h2>作品紹介</h2>
+  <div class="works-scroll">
+    <div class="work" data-img="w1.jpg" data-text="作品1の詳細です。">
+      <img src="w1.jpg" alt="作品1">
+      <p>グラフィック
+　　　<p>星を意識したデザインです。文字の一部や装飾にキラキラとしたものを取り入れました。
+　　　<p>
+      </p>
+    </div>
+
+    <div class="work" data-img="w2.jpg" data-text="作品2の詳細です。">
+      <img src="w2.jpg" alt="作品2">
+      <p>作品2</p>
+    </div>
+
+    <div class="work" data-img="w3.jpg" data-text="作品3の詳細です。">
+      <img src="w3.jpg" alt="作品3">
+      <p>作品3</p>
+    </div>
+
+    <!-- 追加はコピペ！ -->
+  </div>
+</section>
+
+
+<section id="projects">
+  <h2>これまで関わったプロジェクト</h2>
+
+  <div class="works-scroll">
+    <div class="work" data-img="p1.jpg" data-text="作品1の詳細です。">
+      <img src="p1.jpg" alt="写真1">
+      <p>OAD(大阪アートデザイン)プロジェクト
+      <p>衣の中に見るART
+　　　<p>コシノヒロコさんのプロジェクトに参加させていただきました
+  　　<p>コシノヒロコさんには直接布の特性などご指導いただきました
+      </p>
+    </div>
+
+    <div class="work" data-img="p2.jpg" data-text="作品2の詳細です。">
+      <img src="p2.jpg" alt="写真2">
+      <p>八幡フェスタのプロジェクションマッピング
+      <p>プロジェクションマッピングの映像の素材作成、アイデア提案など作品全体の完成に向けて幅広く関わりました
+      </p>
+    </div>
+
+    <div class="work" data-img="p3.jpg" data-text="作品3の詳細です。">
+      <img src="p3.jpg" alt="写真3">
+      <p>滋賀短期大学学園祭看板作成
+      <p>滋賀短期大学在籍中の期間二年間学園祭の看板を作成しました
+      <p>看板データは消失しています
+      </p>
+    </div>
+
+    <div class="work" data-text="作品4の詳細です。">
+  <iframe
+    width="320"
+    height="180"
+    src="https://www.youtube.com/embed/yTDNCnxXlYg?si=PkpUVvV6ly8oODM-"
+    title="YouTube video player"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+  <p>大津市から学校への依頼
+　<p>保育士を増やすプロジェクト
+  <p>
+　<p>
+</p>
+</div>
+
+
+    <div class="work" data-img="p5.jpg" data-text="作品5の詳細です。">
+      <img src="p5.jpg" alt="写真5">
+      <p>プロジェクト5</p>
+    </div>
+
+    <div class="work" data-img="p6.jpg" data-text="作品6の詳細です。">
+      <img src="p6.jpg" alt="写真6">
+      <p>プロジェクト6</p>
+    </div>
+
+
+    <!-- 追加はコピペ！ -->
+  </div>
+</section>
+
+
+
+
+      <section id="contact">
+        <h2>お問い合わせ</h2>
+        <p>メール: katou.ann1227@gmail.com</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 加藤　愛晶</p>
+    </footer>
+  </div>
+
+  <!-- TOPボタン -->
+  <button id="top-button" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">TOP</button>
+
+  <!-- モーダル -->
+  <div class="modal" id="modal">
+    <div class="modal-content" id="modal-content">
+      <img src="" id="modal-img" alt="拡大画像">
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <script>
+    // クリックでモーダル表示
+    document.querySelectorAll('.work').forEach(work => {
+      work.addEventListener('click', e => {
+        e.stopPropagation(); // モーダル外クリック判定から除外
+        const modal = document.getElementById('modal');
+        document.getElementById('modal-img').src = work.dataset.img;
+        document.getElementById('modal-text').textContent = work.dataset.text;
+        modal.style.display = 'flex';
+      });
+    });
+
+    // モーダル外クリックで閉じる
+    document.getElementById('modal').addEventListener('click', () => {
+      document.getElementById('modal').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
